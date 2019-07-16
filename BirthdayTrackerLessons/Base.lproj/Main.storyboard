@@ -114,7 +114,11 @@
                         <viewLayoutGuide key="safeArea" id="D8j-xT-C0V"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Birthday" id="UUU-7u-b3M">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8Qn-d0-VPx"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8Qn-d0-VPx">
+                            <connections>
+                                <action selector="cancelTapped:" destination="tF1-n6-f5x" id="TOM-cf-Orb"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="emL-WX-O9z">
                             <connections>
                                 <action selector="saveTapped:" destination="tF1-n6-f5x" id="Ckw-LO-Tag"/>
