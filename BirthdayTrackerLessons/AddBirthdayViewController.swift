@@ -23,6 +23,14 @@ class AddBirthdayViewController: UIViewController {
         
     }
     
+    // MARK: - IBActions
+    
+    @IBAction func saveTapped(_ sender: UIBarButtonItem) {
+        print("save button tapped.")
+        let firstName = firstNameTextField.text ?? ""
+        let lastName = lastNameTextField.text ?? ""
+        print("My name is \(firstName) \(lastName).")
+    }
 
     /*
     // MARK: - Navigation
