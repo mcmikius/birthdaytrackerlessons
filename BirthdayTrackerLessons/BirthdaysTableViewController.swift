@@ -29,6 +29,9 @@ class BirthdaysTableViewController: UITableViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = Birthday.fetchRequest() as NSFetchRequest<Birthday>
+        let sortDescriptor1 = NSSortDescriptor(key: "lastName", ascending: true)
+        let sortDescriptor2 = NSSortDescriptor(key: "firstName", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
         do {
             birthdays = try context.fetch(fetchRequest)
             
@@ -79,7 +82,7 @@ class BirthdaysTableViewController: UITableViewController {
      tableView.deleteRows(at: [indexPath], with: .fade)
      } else if editingStyle == .insert {
      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }    
+     }
      }
      */
     
