@@ -19,10 +19,10 @@ class AddBirthdayViewController: UIViewController {
     @IBOutlet var birthdatePicker: UIDatePicker!
     
     // MARK: - Properties
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         birthdatePicker.maximumDate = Date()
         
     }
@@ -46,6 +46,19 @@ class AddBirthdayViewController: UIViewController {
         }
         do {
             try context.save()
+            let message = "Сегодня \(firstName) \(lastName) празднует день рождения!"
+            let content = UNMutableNotificationContent()
+            content.body = message
+            content.sound = UNNotificationSound.default
+            var dateComponents = Calendar.current.dateComponents([.month, .day], from: birthdate)
+            dateComponents.hour = 13
+            dateComponents.minute = 45
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            if let identifier = newBirthday.birthdayId {
+                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                let center = UNUserNotificationCenter.current()
+                center.add(request, withCompletionHandler: nil)
+            }
         } catch let error {
             print("Не удалось сохранить из-за ошибки \(error).")
         }
@@ -55,15 +68,15 @@ class AddBirthdayViewController: UIViewController {
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
