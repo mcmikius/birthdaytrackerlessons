@@ -26,12 +26,14 @@ class AddBirthdayViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
-        print("Save button tapped.")
         let firstName = firstNameTextField.text ?? ""
         let lastName = lastNameTextField.text ?? ""
-        print("My name is \(firstName) \(lastName).")
         let birthdate = birthdatePicker.date
-        print("My birthdate \(birthdate).")
+        let newBirthday = Birthday(firstName: firstName, lastName: lastName, birthdate: birthdate)
+        print("Created birthday record!")
+        print("First Name: \(newBirthday.firstName)")
+        print("Last Name: \(newBirthday.lastName)")
+        print("Birthdate: \(newBirthday.birthdate)")
     }
 
     /*
