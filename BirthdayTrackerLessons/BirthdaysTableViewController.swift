@@ -8,7 +8,8 @@
 
 import UIKit
 
-class BirthdaysTableViewController: UITableViewController {
+class BirthdaysTableViewController: UITableViewController, AddBirthdayViewControllerDelegate {
+    
     
     // MARK: - Properties
     
@@ -87,5 +88,13 @@ class BirthdaysTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    // MARK: - AddBirthdayViewControllerDelegate
+    
+    func addBirthdayViewController(_ addBirthdayViewController: AddBirthdayViewController, didAddBirthday birthday: Birthday) {
+        birthdays.append(birthday)
+        tableView.reloadData()
+    }
 
 }

@@ -15,6 +15,10 @@ class AddBirthdayViewController: UIViewController {
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var birthdatePicker: UIDatePicker!
+    
+    // MARK: - Properties
+    
+    var delegate: AddBirthdayViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +34,8 @@ class AddBirthdayViewController: UIViewController {
         let lastName = lastNameTextField.text ?? ""
         let birthdate = birthdatePicker.date
         let newBirthday = Birthday(firstName: firstName, lastName: lastName, birthdate: birthdate)
-        print("Created birthday record!")
-        print("First Name: \(newBirthday.firstName)")
-        print("Last Name: \(newBirthday.lastName)")
-        print("Birthdate: \(newBirthday.birthdate)")
+        delegate?.addBirthdayViewController(self, didAddBirthday: newBirthday)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
